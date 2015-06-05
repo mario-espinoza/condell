@@ -12,8 +12,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://maps.googleapis.com/maps/api/ ;media-src 
-
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://maps.googleapis.com https://maps.gstatic.com 'unsafe-eval' 'unsafe-inline'; object-src 'self'">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <title>Condell</title>
@@ -21,14 +20,12 @@
   <!-- CSS  -->
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-        <script type="text/javascript"
-             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPbeZ3pprAtLAE9q2uPPLwceWN_u-LC2I">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPbeZ3pprAtLAE9q2uPPLwceWN_u-LC2I&sensor=true">
         </script>
         <script type="text/javascript">
              function initialize() {
                var mapOptions = {
-                 center: { lat: -34.397, lng: 150.644},
+                 center: { lat: -30.2442319,lon: -71.5037422},
                  zoom: 8
                };
                var map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -56,7 +53,13 @@
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 			</div>
 		</nav>
-        <div id="map-canvas"></div>
+        <div id="index-banner" class="parallax-container">
+           <div class="section no-pad-bot">
+               <div class="container">
+                   <div id="map-canvas" style="height:600px;width:350px"></div>
+               </div>
+           </div>
+        </div>
         <footer class="page-footer teal">
             <div class="container">
                 <div class="row">
@@ -73,6 +76,5 @@
         <script type="text/javascript" src="js/materialize.js"></script>
 		<script type="text/javascript" src="js/init.js"></script>
         <script type="text/javascript" src="js/maps.js"></script>
-
 	</body>
 </html>
