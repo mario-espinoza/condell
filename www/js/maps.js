@@ -31,6 +31,5 @@
             center: new google.maps.LatLng(-34.397, 150.644)
         });
     };
-
     document.addEventListener("deviceready", onDeviceReady, false);
 })(window);

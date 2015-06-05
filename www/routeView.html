@@ -12,7 +12,8 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://maps.googleapis.com/maps/api/ ;media-src 
+
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <title>Condell</title>
@@ -20,7 +21,22 @@
   <!-- CSS  -->
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	</head>
+
+        <script type="text/javascript"
+             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPbeZ3pprAtLAE9q2uPPLwceWN_u-LC2I">
+        </script>
+        <script type="text/javascript">
+             function initialize() {
+               var mapOptions = {
+                 center: { lat: -34.397, lng: 150.644},
+                 zoom: 8
+               };
+               var map = new google.maps.Map(document.getElementById('map-canvas'),
+                   mapOptions);
+             }
+             google.maps.event.addDomListener(window, 'load', initialize);
+         </script>
+    </head>
 	<body>
         <nav class="light-blue darken-4" role="navigation">
 			<div class="nav-wrapper container">
@@ -40,9 +56,7 @@
 				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 			</div>
 		</nav>
-        <div id="index-banner" class="parallax-container">
-            <div id="map"></div>
-        </div>
+        <div id="map-canvas"></div>
         <footer class="page-footer teal">
             <div class="container">
                 <div class="row">
